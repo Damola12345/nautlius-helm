@@ -1,0 +1,24 @@
+deployment:
+  image: mysql
+  tag: latest
+  name: mysql
+  replica: 2
+selector:
+  mysql:
+    name: mysql-db
+container:
+  mysql:
+    portNumber: 3306
+secret:
+  mysql:
+    name: mysql-secret
+config:
+  mysql:
+    name: mysql-config
+service:
+  mysql:
+    name: mysql-svc
+    port: 3306
+    targetPort: 3306
+ingress:
+  name: helm-ingress

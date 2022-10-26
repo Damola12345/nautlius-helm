@@ -26,6 +26,11 @@ helm template nautilus-example
 helm install nautilus-example
 ```
 
+## Uninstall app using Chart
+```
+helm uninstall nautilus-example
+```
+
 # list our releases
 ```
 helm list

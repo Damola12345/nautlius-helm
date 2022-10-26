@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: {{ .Values.deployment.name }}
   labels:
-    app: {{ .Values.selector.mysql.name }}
+    app: {{ .Values.selector }}
 spec:
-  replicas: {{ .Values.selector.mysql.replica }}
+  replicas: {{ .Values.replica }}
   selector:
     matchLabels:
-      app: {{ .Values.selector.mysql.name }}
+      app: {{ .Values.selector }}
   template:
     metadata:
       labels:
-        app: {{ .Values.selector.mysql.name }}
+        app: {{ .Values.selector }}
     spec:
       containers:
-      - name: {{ .Values.selector.mysql.name }}
+      - name: {{ .Values.selector }}
         image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
         ports:
         - containerPort: {{ .Values.container.mysql.portNumber }}
@@ -23,5 +23,5 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secret.mysql.name }}
+              name: {{ .Values.secret }}
               key: password
